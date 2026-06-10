@@ -25,6 +25,10 @@ KEYFRAMES_DIR = PROCESSED_DIR / "keyframes"
 for d in [RAW_VIDEO_DIR, PROCESSED_DIR, TRANSCRIPT_DIR, INDEXES_DIR]:
     d.mkdir(parents=True, exist_ok=True)
 
+# Tạo thư mục keyframe
+for d in [RAW_VIDEO_DIR, PROCESSED_DIR, TRANSCRIPT_DIR, INDEXES_DIR, KEYFRAMES_DIR]:
+    d.mkdir(parents=True, exist_ok=True)
+
 # Index paths — 4 loại index riêng biệt
 TEXT_SPARSE_INDEX_DIR = str(INDEXES_DIR / "text_sparse")
 TEXT_DENSE_INDEX_PATH = str(INDEXES_DIR / "text_dense.index")
