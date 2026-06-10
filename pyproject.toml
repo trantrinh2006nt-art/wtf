@@ -1,0 +1,52 @@
+[project]
+name = "video-evidence-retrieval"
+version = "2.0.0"
+description = "AI Video Evidence Retrieval System — Pipeline Lai Tạo (AI Challenge 2026)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    # Core ML
+    "torch",
+    "torchaudio",
+    "torchvision",
+    "transformers>=4.53,<5",
+    "accelerate",
+    "sentence-transformers>=3.0.0",
+    # Vector DB & Search
+    "faiss-cpu>=1.14.2",
+    "rank-bm25>=0.2.2",
+    "numpy",
+    # Vision & Image
+    "opencv-python",
+    "pillow",
+    # LLM API
+    "google-genai>=2.8.0",
+    # ASR (Fallback)
+    "openai-whisper",
+    # OCR (Optional — install separately if needed)
+    # "vietocr",
+    # "paddleocr",
+    # Web Dashboard
+    "fastapi>=0.115.0",
+    "uvicorn>=0.34.0",
+    # Utilities
+    "scikit-learn>=1.7.2",
+    "paddleocr>=2.10.0",
+    "vietocr>=0.3.12",
+    "paddlepaddle>=3.3.1",
+    "sentencepiece>=0.2.1",
+    "soundfile>=0.14.0",
+    "setuptools<81",
+    "easyocr>=1.7.2",
+]
+
+# Ép uv lấy PyTorch từ kho CUDA 12.4
+[tool.uv.sources]
+torch = { index = "pytorch" }
+torchvision = { index = "pytorch" }
+torchaudio = { index = "pytorch" }
+
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
