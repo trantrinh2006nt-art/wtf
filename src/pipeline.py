@@ -638,6 +638,23 @@ class VERPipeline:
             duration, asr_segments, audio_events, ocr_data, video_clips, frame_data
         )
 
+        # ─── 7. BỔ SUNG LƯU KEYFRAME CHO WEB ───
+        log_step("Save Keyframes", f"Đang lưu thumbnails cho {video_name}")
+        for seg in segments:
+            kf_path = Path(KEYFRAMES_DIR) / f"{seg.segment_id}.jpg"
+            if not kf_path.exists():
+                # Lấy frame ở thời điểm giữa (hoặc start) của segment
+                mid_time = (seg.start_time + seg.end_time) / 2
+                try:
+                    # Sử dụng hàm extract_frame bạn đã import từ utils
+                    frame = extract_frame(video_path, mid_time) 
+                    if frame is not None:
+                        # Convert sang PIL Image hoặc dùng cv2 để lưu
+                        import cv2
+                        cv2.imwrite(str(kf_path), cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
+                except Exception as e:
+                    log_warning(f"Lỗi không thể lưu keyframe {seg.segment_id}: {e}")
+
         return segments
 
     # ─── Engine runners (tuần tự, lazy load) ───
