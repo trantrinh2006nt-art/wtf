@@ -21,11 +21,7 @@ TRANSCRIPT_DIR = PROCESSED_DIR / "transcripts"
 INDEXES_DIR = PROCESSED_DIR / "indexes"
 KEYFRAMES_DIR = PROCESSED_DIR / "keyframes"
 
-# Tạo thư mục nếu chưa tồn tại
-for d in [RAW_VIDEO_DIR, PROCESSED_DIR, TRANSCRIPT_DIR, INDEXES_DIR]:
-    d.mkdir(parents=True, exist_ok=True)
-
-# Tạo thư mục keyframe
+# tạo các folder
 for d in [RAW_VIDEO_DIR, PROCESSED_DIR, TRANSCRIPT_DIR, INDEXES_DIR, KEYFRAMES_DIR]:
     d.mkdir(parents=True, exist_ok=True)
 
